@@ -1,0 +1,548 @@
+*, *::before, *::after{
+    box-sizing: border-box; /* Set the sizing of an element to include it's border */
+}
+
+*{
+    margin: 0; /* Set the default margin to 0 */
+    padding: 0; /* Set the default padding to 0 */
+}
+
+ul[role='list'], ol[role='list'], ul{
+    list-style: none; /* Turn off numbered and unordered list decoration */
+}
+
+html:focus-within{
+    scroll-behavior: smooth; /* Make the scrolling inside of any scrollable element smooth */
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto; /* Makes link undelines look better */
+}
+
+a {
+    text-decoration: none;
+}
+
+img, picture, svg, video, canvas{
+    max-width: 100%; /* Makes it responsive */
+    height: auto; /* Makes it responsive */
+    vertical-align: middle; /* Makes text next to inline images look better */
+    font-style: italic; /* If the images don't load it makes the alt decription look better */
+    background-repeat: no-repeat; 
+    /* The background repeat and size are there if you want to load a picture first like a backroung image that is worse quality while the better quality image loads */
+    background-size: cover;
+}
+
+input, button, textarea, select{
+    font: inherit; /* Makes these elements inherit fonts */
+}
+
+/* Turns off animation for people who don't want to see them */
+@media (prefers-reduced-motion: reduce){
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+body, html{
+    height: 100%; /* Makes the body element full screen */
+    scroll-behavior: smooth; /* Makes normal scrolling smooth */
+    font-family: "Barlow", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+
+    background-color: var(rgb(255, 253, 248));
+}
+
+:root {
+    /* Custom variables */
+    --primary-blue: hsla(200, 100%, 62%, 100%);
+    --primary-green: hsla(167, 44%, 70%, 100%);
+    --primary-beige: rgb(250, 244, 239);
+    --primary-red: hsla(6, 99%, 69%, 100%);
+    --primary-yellow: hsla(51, 98%, 50%, 100%);
+
+    --primary-font-color--off-white: hsla(180, 33%, 99%, 100%);
+    --primary-font-color--black-dark: hsla(214, 26%, 19%, 100%);
+    --primary-font-color--black-medium-dark: hsla(214, 26%, 19%, 75%);
+    --primary-font-color--black-medium: hsla(214, 26%, 19%, 55%);
+    --primary-font-color--black-light: hsla(214, 26%, 19%, 25%);
+
+    --heading-font-family: "Fraunces", serif;
+
+}
+
+.hidden {
+    display: none;
+}
+
+/*
+  ------ Heading/Nav ------
+*/
+
+h1, h2, h3, h4{
+    font-family: var(--heading-font-family);
+    font-weight: 900;
+}
+
+header {
+    background-image: url(./images/mobile/image-header.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.primary-nav--desktop {
+    display: none;
+}
+
+.primary-nav--container {
+    position: relative;
+}
+
+.logo-hamburger-container {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1.15rem; 
+    padding-block: 1.75rem; 
+}
+
+.primary-nav--nav {
+    --primary-nav-margin-inline: 20px;
+
+    position: absolute;
+    background-color: var(--primary-beige);
+    width: calc(100% - var(--primary-nav-margin-inline) - var(--primary-nav-margin-inline));
+    margin-inline: var(--primary-nav-margin-inline);
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.primary-nav__link {
+    padding-block: 1rem;
+}
+
+.primary-nav__link a {
+    color: var(--primary-font-color--black-medium);
+    font-size: 1.2rem;
+}
+
+.primary-nav__button {
+    font-family: var(--heading-font-family);
+    background-color: var(--primary-yellow);
+    border: none;
+    border-radius: 100vw;
+    padding-inline: 1.75rem;
+    padding-block: .9rem;
+}
+
+.primary-nav__button a{
+    color: var(--primary-font-color--black-dark);
+    font-size: 1rem;
+}
+
+.primary-nav--hamburger:hover {
+    cursor: pointer;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10rem;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    letter-spacing: 6px;
+    font-size: 2.5rem;
+}
+
+.hero-heading {
+    padding-block: 3rem;
+}
+
+/*
+  ------ Sections ------
+*/
+
+#about, #services {
+    background-color: var(--primary-beige);
+}
+
+#testimonials {
+    background-color: white;
+}
+
+.page-container {
+    max-width: 60em;
+   margin-inline: auto;
+}
+
+.section--text-container {
+    position: relative;
+    text-align: center;
+    padding-block: 3rem;
+    padding-inline: 2.4rem;
+}
+
+.section--header {
+    font-size: 1.9rem;
+}
+
+.section--text-content {
+    line-height: 1.6;
+    padding-block: 2rem;
+}
+
+.link--learn-more {
+    font-family: var(--heading-font-family);
+    color: var(--primary-font-color--black-dark);
+    font-weight: 900;
+}
+
+.yellow-underline {
+    position: relative;
+    z-index: 10;
+}
+
+.yellow-underline:after{
+    position: absolute;
+    bottom: -2px;
+    left: -4%;
+    content: '';
+    background-color: var(--primary-yellow);
+    opacity: .25;
+    height: 10px;
+    width: 108%;
+    border-radius: 100vw;
+    z-index: -1;
+}
+
+.red-underline {
+    position: relative;
+    z-index: 10;
+}
+
+.red-underline:after{
+    position: absolute;
+    bottom: -2px;
+    left: -4%;
+    content: '';
+    background-color: var(--primary-red);
+    opacity: .25;
+    height: 10px;
+    width: 108%;
+    border-radius: 100vw;
+    z-index: -1;
+}
+
+.yellow-underline:hover:after,
+.red-underline:hover:after {
+    transition: 700ms;
+    opacity: 1;
+}
+
+.descriptor-text {
+    color: var(--primary-font-color--black-medium);
+}
+
+.section--extra-services {
+    padding-top: 28rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+.service__graphic-design {
+    background-image: url(./images/mobile/image-graphic-design.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.service__photography {
+    background-image: url(./images/mobile/image-photography.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.extra-services--header {
+    font-size: 1.75rem;
+    color: var(--primary-font-color--black-medium-dark);
+}
+
+.extra-services--text-content {
+    padding-inline: 1.05rem;
+    padding-block: 1.5rem;
+    line-height: 1.6;
+    color: var(--primary-font-color--black-medium-dark);
+}
+
+/*
+  ------ Testimonials ------
+*/
+
+.section--testimonial-container {
+    padding-inline: 2rem;
+    padding-block: 2.5rem;
+    text-align: center;
+}
+
+.testimonial--heading {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--primary-font-color--black-light);
+    letter-spacing: 5px;
+    /* margin-block: 1rem; */
+    font-weight: 900;
+    padding-top: 3rem;
+}
+
+.testimonial {
+    margin-bottom: 4rem;
+}
+
+.testimonial p:nth-child(3){
+    margin-bottom: .55rem;
+}
+
+.testimonial--avatar {
+    max-width: 75px;
+    border-radius: 100vw;
+    aspect-ratio: 1;
+}
+
+.testimonial-text {
+    color: var(--primary-font-color--black-medium-dark);
+}
+
+.client-name {
+    font-family: var(--heading-font-family);
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.client-title {
+    color: var(--primary-font-color--black-medium);
+    font-size: 16px;
+}
+
+/*
+   ------ Image Grid ------
+*/
+
+.section--portfolio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*
+   ------ Footer ------
+*/
+
+footer {
+    background-color: var(--primary-green);
+    padding-inline: 2rem;
+    padding-block:2rem;
+    text-align: center;
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+.logo-link--container {
+    padding-block: 2rem;
+}
+
+.footer--logo svg{
+    scale: 1.5;
+}
+
+.secondary-nav--links {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 3rem;
+}
+
+.secondary-nav__link a{
+    font-size: 1.1rem;
+    color: #2C7566;
+    opacity: .75;
+}
+
+.secondary-nav__link a:hover {
+    color: white;
+    transition: 200ms;
+}
+
+.footer--social-links {
+    padding-block: 3rem;
+}
+
+.footer--social-links img:hover {
+    cursor: pointer;
+}
+
+.footer--social-links img{
+    margin-inline: .75rem;
+}
+
+@media (min-width: 36em) {
+    .secondary-nav--links {
+        padding-inline: 2rem;
+    }
+}
+
+@media (min-width: 46.25em) {
+
+    header {
+        background-image: url(./images/desktop/image-header.jpg);
+    }
+
+    .primary-nav--hamburger {
+        display: none;
+    }
+
+    .primary-nav--container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .primary-nav--desktop {
+        display: block;
+    }
+
+    .primary-nav--links {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+    }
+    
+    .primary-nav__link {
+        margin-left: 2rem;
+    }
+
+    .primary-nav__link a {
+        color: var(--primary-beige);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .primary-nav__link a:hover {
+        transition: 250ms;
+        opacity: .5;
+    }
+    
+    .primary-nav__button {
+        background-color: var(--primary-beige);
+        border: none;
+        border-radius: 100vw;
+        padding-inline: 1.5rem;
+        padding-block: .85rem;
+        /* margin-right: 2rem; */
+    }
+
+    .primary-nav__button {
+        font-family: var(--heading-font-family);
+        color: var(--primary-font-color--black-dark);
+        font-size: .75rem;
+        font-weight: 900;
+    }
+
+    .primary-nav__button:hover {
+        color: white;
+        cursor: pointer;
+        background-color: hsla(199, 96%, 71%, 100%);
+        transition: 250ms;
+    }
+
+    .primary-nav__button a:hover {
+        color: var(--primary-beige);
+        transition: 250ms;
+    }
+
+    .section--block {
+        display: flex;
+    }
+
+    .flex-col-reverse {
+        flex-direction: row-reverse;
+    }
+
+    .section--header {
+        font-size: 1rem;
+    }
+
+    .section--text-content {
+        font-size: .8rem;
+        padding-block: 1rem;
+    }
+    
+    .link--learn-more {
+        font-size: .8rem;
+    }
+
+    .section--text-container {
+        text-align: left;
+        max-width: 50%;
+        margin-inline: auto;
+        margin-block: auto;
+    }
+
+    .left-align {
+        text-align: left !important;
+    }
+
+    .section--extra-services{
+        max-width: 50%;
+        padding-top: 17rem;
+        padding-inline: 3rem;
+    }
+
+    .service__graphic-design {
+        background-image: url(./images/desktop/image-graphic-design.jpg);
+    }
+
+    .service__photography {
+        background-image: url(./images/desktop/image-photography.jpg);
+    }
+
+    .section--testimonial-container {
+        display: flex;
+        gap: 1rem;
+        padding-bottom: 4rem;
+    }
+
+    .extra-services--header {
+        font-size: 1.1rem;
+    }
+
+    .extra-services--text-content {
+        font-size: .9rem;
+    }
+
+    .testimonial--heading {
+        margin-top: 0;
+        padding-top: 2.5rem;
+    }
+
+    .testimonial-text {
+        flex-grow: 1;
+    }
+
+    .section--portfolio-container  {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .secondary-nav--links {
+        justify-content: space-around;
+        margin-inline: 8rem;
+    }
+}
